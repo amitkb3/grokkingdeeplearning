@@ -45,29 +45,45 @@
 # print(weight)
 
 # Multi-iteration Hot&Cold Learning
-weight = 0.5
-input = 0.5
-goal_prediction = 0.8
+# weight = 0.5
+# input = 0.5
+# goal_prediction = 0.8
 
-step_amount =  0.001
+# step_amount =  0.001
 
-for iteration in range(1101):
-  prediction = input*weight
-  error = (prediction - goal_prediction) ** 2
+# for iteration in range(1101):
+#   prediction = input*weight
+#   error = (prediction - goal_prediction) ** 2
 
-  print(f"Error: {error} Prediction: {prediction}")
+#   print(f"Error: {error} Prediction: {prediction}")
 
-  up_prediction = input * (weight + step_amount)
-  up_error = (up_prediction - goal_prediction) ** 2
+#   up_prediction = input * (weight + step_amount)
+#   up_error = (up_prediction - goal_prediction) ** 2
 
-  down_prediction = input * (weight - step_amount)
-  down_error = (down_prediction - goal_prediction) ** 2
+#   down_prediction = input * (weight - step_amount)
+#   down_error = (down_prediction - goal_prediction) ** 2
 
-  if(down_error < up_error):
-    weight = weight - step_amount
+#   if(down_error < up_error):
+#     weight = weight - step_amount
   
-  if(down_error > up_error):
-    weight = weight + step_amount
+#   if(down_error > up_error):
+#     weight = weight + step_amount
+
+# Simple Gradient Descent
+weight = 0.5
+goal_pred = 0.8
+input = 0.5
+
+for iteration in range(20):
+  pred = input * weight
+  error = (pred - goal_pred) ** 2
+  direction_and_amount = (pred - goal_pred) * input
+  weight = weight - direction_and_amount
+
+  print(f"Error: {error} Prediction: {pred}")
+
+
+
 
 
 
